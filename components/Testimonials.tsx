@@ -53,14 +53,18 @@ const testimonials = [
 export default function Testimonials() {
   const [active, setActive] = useState(0);
 
-  const prev = () => setActive((a) => (a === 0 ? testimonials.length - 1 : a - 1));
-  const next = () => setActive((a) => (a === testimonials.length - 1 ? 0 : a + 1));
+  const prev = () =>
+    setActive((a) => (a === 0 ? testimonials.length - 1 : a - 1));
+
+  const next = () =>
+    setActive((a) => (a === testimonials.length - 1 ? 0 : a + 1));
 
   const t = testimonials[active];
 
   return (
     <section className="py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="section-tag mb-4">Testimonials</span>
@@ -76,15 +80,18 @@ export default function Testimonials() {
         {/* Featured testimonial */}
         <div className="max-w-3xl mx-auto">
           <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-12 relative">
-            {/* Quote mark */}
+            
+            {/* Decorative quote mark (FIXED) */}
             <div className="absolute -top-5 left-10 text-8xl text-[#0066FF]/10 font-serif leading-none select-none">
-              "
+              &ldquo;
             </div>
 
             {/* Stars */}
             <div className="flex gap-1 mb-6">
               {Array.from({ length: t.rating }).map((_, i) => (
-                <span key={i} className="text-yellow-400 text-xl">★</span>
+                <span key={i} className="text-yellow-400 text-xl">
+                  ★
+                </span>
               ))}
             </div>
 
@@ -104,7 +111,10 @@ export default function Testimonials() {
                 {t.avatar}
               </div>
               <div>
-                <p className="font-bold text-gray-900" style={{ fontFamily: "Sora, sans-serif" }}>
+                <p
+                  className="font-bold text-gray-900"
+                  style={{ fontFamily: "Sora, sans-serif" }}
+                >
                   {t.name}
                 </p>
                 <p className="text-gray-500 text-sm">{t.role}</p>
@@ -113,6 +123,7 @@ export default function Testimonials() {
 
             {/* Navigation */}
             <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
+              
               {/* Dots */}
               <div className="flex gap-2">
                 {testimonials.map((_, i) => (
@@ -120,7 +131,9 @@ export default function Testimonials() {
                     key={i}
                     onClick={() => setActive(i)}
                     className={`h-2 rounded-full transition-all duration-300 ${
-                      i === active ? "w-8 bg-[#0066FF]" : "w-2 bg-gray-200 hover:bg-gray-300"
+                      i === active
+                        ? "w-8 bg-[#0066FF]"
+                        : "w-2 bg-gray-200 hover:bg-gray-300"
                     }`}
                     aria-label={`Testimonial ${i + 1}`}
                   />
@@ -148,7 +161,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Mini cards row */}
+        {/* Mini cards */}
         <div className="hidden md:flex justify-center gap-4 mt-8">
           {testimonials.map((test, i) => (
             <button
@@ -169,6 +182,7 @@ export default function Testimonials() {
             </button>
           ))}
         </div>
+
       </div>
     </section>
   );

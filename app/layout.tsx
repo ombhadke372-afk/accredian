@@ -1,29 +1,32 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+});
 
 export const metadata: Metadata = {
   title: "Accredian Enterprise | Upskill Your Workforce",
   description:
     "Transform your organization with Accredian's enterprise learning solutions. World-class programs in AI, Data Science, Product Management & more.",
-  keywords: "enterprise learning, corporate training, upskilling, AI courses, data science",
+  keywords:
+    "enterprise learning, corporate training, upskilling, AI courses, data science",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${sora.variable} ${jakarta.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

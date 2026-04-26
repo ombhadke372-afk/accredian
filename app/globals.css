@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-blue: #0066FF;
+  --brand-dark: #0A0F1E;
+  --brand-accent: #00C2FF;
+  --brand-light: #F0F6FF;
+  --brand-mid: #E8F0FE;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#0066FF] text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#0052cc] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#0066FF] text-[#0066FF] px-6 py-3 rounded-lg font-semibold text-sm hover:bg-[#0066FF] hover:text-white transition-all duration-200;
+  }
+
+  .section-tag {
+    @apply inline-flex items-center gap-2 bg-blue-50 text-[#0066FF] text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+}
+
+/* Gradient mesh background for hero */
+.hero-mesh {
+  background: linear-gradient(135deg, #0A0F1E 0%, #0d1b3e 40%, #0a2a6e 70%, #0066FF 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-mesh::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0, 194, 255, 0.15) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 80% at 10% 80%, rgba(0, 102, 255, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Animated floating dots */
+.floating-dots {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-20px) translateX(10px); }
+  66% { transform: translateY(10px) translateX(-10px); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #0066FF; border-radius: 3px; }
+
+/* Stats counter animation */
+.stat-number {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  background: linear-gradient(135deg, #0066FF, #00C2FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid pattern overlay */
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(0, 102, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 102, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
